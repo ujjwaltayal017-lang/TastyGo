@@ -1,0 +1,26 @@
+import React, { createContext, useState } from 'react'
+import { food_items } from '../data/food';
+export const dataContext = createContext();
+
+
+function UserContext({ children }) {
+
+    const [dishCategory, setDishCategory] = useState(food_items);
+    let [input, setInput] = useState("");
+    let [showCart, setShowCart] = useState(false);
+
+    let data = {
+        input, setInput, dishCategory, setDishCategory, showCart, setShowCart
+    }
+
+    return (
+        <div>
+            <dataContext.Provider value={data}>
+                {children}
+            </dataContext.Provider>
+
+        </div>
+    )
+}
+
+export default UserContext
